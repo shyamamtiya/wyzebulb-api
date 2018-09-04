@@ -1,0 +1,18 @@
+extends layout
+
+block content
+  form(method='POST' action='/sms/sms')
+    legend Filter
+    .form-group
+      label(for='Mobile') Mobile
+        input.form-control(type='text', name='mobile' value=mobile)
+    .form-group
+      label(for='msg') Type a message...
+        input.form-control(type='text', name='msg')
+    .form-group
+        input.form-control(type='hidden', name='operator' value=operator)
+    .form-group
+        input.form-control(type='hidden', name='value' value=inpValue)
+    .form-group
+        input.form-control(type='hidden', name='carttotal' value=carttotal)                        
+    button.btn.btn-primary(type='submit') Submit  

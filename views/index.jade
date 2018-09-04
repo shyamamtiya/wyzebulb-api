@@ -1,0 +1,23 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+  form(method='POST' action='/')
+    legend Details
+    .form-group
+      label(for='name') Name
+      input.form-control(type='text', name='name', autofocus)
+    .form-group
+      label(for='mobile') Mobile
+      input.form-control(type='number', name='mobile')
+    .form-group
+      label(for='mobile_alt') Alternate Mobile
+      input.form-control(type='number', name='mobile_alt')
+    .form-group
+      label(for='item') Cart Item
+      input.form-control(type='number', name='cart')
+    .form-group
+      label(for='item') Cart Total
+      input.form-control(type='number', name='carttotal')  
+    button.btn.btn-primary(type='submit') Submit

@@ -1,0 +1,25 @@
+extends layout
+
+block content
+  form(method='POST' action="/trigger")
+    legend Filter
+    .form-group
+      label(for='sel1') Select list (select one):
+        select#sel1.form-control(name='sel1')
+          option #{carttotal}
+    .form-group
+      label(for='sel2') Filter condition:
+        select#sel2.form-control(name='sel2')
+          option equals
+          option not equals
+          option lesser than 
+          option greater than
+          option contains      
+    .form-group
+      label(for='filtervalue') Value
+        input.form-control(type='text', name='filtervalue')
+    .form-group
+        input.form-control(type='hidden', name='mobile' value=mobile)
+    .form-group
+        input.form-control(type='hidden', name='carttotal' value=carttotal)               
+    button.btn.btn-primary(type='submit') Submit    
