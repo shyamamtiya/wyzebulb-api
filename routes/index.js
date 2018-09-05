@@ -20,4 +20,8 @@ router.post('/trigger', function(req, res, next) {
 	});
 	console.log('body', req.body);
 });
+
+function something() {
+	console.log('something');
+}
 module.exports = router;

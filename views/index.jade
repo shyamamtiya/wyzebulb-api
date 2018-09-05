@@ -3,7 +3,7 @@ extends layout
 block content
   h1= title
   p Welcome to #{title}
-  form(method='POST' action='/')
+  form(method='POST' )
     legend Details
     .form-group
       label(for='name') Name
@@ -20,4 +20,4 @@ block content
     .form-group
       label(for='item') Cart Total
       input.form-control(type='number', name='carttotal')  
-    button.btn.btn-primary(type='submit') Submit
+    button.btn.btn-primary(onclick='something()') Submit

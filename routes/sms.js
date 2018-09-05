@@ -22,13 +22,16 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/sms', function(req, res, next) {
-	console.log(req.body);
+	let selectField = req.body.selectedField;
+	console.log('sele', selectField);
+	console.log(req.body[selectField]);
+	console.log(req.body)
 	let s = req.body.operator;
 	jsonObj.smsText = req.body.msg;
-	jsonObj.toNumber = req.body.mobile;
+	jsonObj.toNumber = req.body.phone;
 	switch (s) {
 		case 'lesser than': {
-			if (req.body.carttotal < req.body.value) {
+			if (req.body[selectField] < req.body.inpValue) {
 				sendSMS(req, res, function(obj) {
 					res.send(obj);
 				});
@@ -38,7 +41,7 @@ router.post('/sms', function(req, res, next) {
 			break;
 		}
 		case 'greater than': {
-			if (req.body.carttotal > req.body.value) {
+			if (req.body[selectField] > req.body.inpValue) {
 				sendSMS(req, res, function(obj) {
 					res.send(obj);
 				});
@@ -48,7 +51,7 @@ router.post('/sms', function(req, res, next) {
 			break;
 		}
 		case 'equals': {
-			if (req.body.carttotal == req.body.value) {
+			if (req.body[selectField] == req.body.inpValue) {
 				sendSMS(req, res, function(obj) {
 					res.send(obj);
 				});
@@ -58,15 +61,17 @@ router.post('/sms', function(req, res, next) {
 			break;
 		}
 		case 'not equals': {
-			if (req.body.carttotal != req.body.value) {
+			if (req.body[selectField] != req.body.inpValue) {
 				sendSMS(req, res, function(obj) {
 					res.send(obj);
 				});
+			} else {
+				res.send('Unable to send msg due to condition mismatch');
 			}
 			break;
 		}
 		case 'contains': {
-			if (req.body.carttotal > 0) {
+			if (req.body[selectField] > 0) {
 				sendSMS(req, res, function(obj) {
 					res.send(obj);
 				});
